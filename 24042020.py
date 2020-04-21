@@ -15,7 +15,26 @@
 
 # write a function to do this.
 
+#Over-riding the + operator using a class
+class o:
+    def __init__(self, i):
+        self.var = i
 
+    def __add__(self, other):
+        if type(self.var) == str and type(other.var) == str: 
+            return int(self.var) + int(other.var)
+
+        elif type(self.var) == int and type(other.var) == int: 
+            return str(self.var) + str(other.var)
+
+        else: return None
+
+print('string addition:', o('1') + o('2') )
+print('int addition:', o(1) + o(2) )
+print('mixed addition:', o(1) + o('1') )
+
+
+#The function version
 def stupid_addition(p1, p2):
 
     if type(p1) == str and type(p2) == str: 
@@ -27,8 +46,9 @@ def stupid_addition(p1, p2):
     else:
         return None
 
-if __name__ == '__main__':
 
-    print('String addition:', stupid_addition('1','2'))
-    print('Int addition:',stupid_addition(1,2))
-    print('Mixed addition:', stupid_addition('1',2))
+print('String addition:', stupid_addition('1','2'))
+print('Int addition:',stupid_addition(1,2))
+print('Mixed addition:', stupid_addition('1',2))
+
+
